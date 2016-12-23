@@ -1,0 +1,16 @@
+#!/bin/bash
+set -e -x
+
+###
+# Making sure curl is installed
+###
+apt-get update
+apt-get install -y curl
+###
+# Installing Docker
+###
+curl -sSL https://get.docker.com/ | sh
+###
+# Cleaning Image
+###
+apt-get clean
