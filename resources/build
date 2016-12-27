@@ -9,8 +9,8 @@ apt-get install -y curl
 ###
 # Installing Docker
 ###
-apt-get purge "lxc-docker*"
-apt-get purge "docker.io*"
+apt-get purge "lxc-docker*" || true
+apt-get purge "docker.io*" || true
 apt-get install -y \
   apt-transport-https \
   ca-certificates \
