@@ -25,7 +25,19 @@ echo "deb https://apt.dockerproject.org/repo debian-jessie main" > /etc/apt/sour
 apt-get update
 # Installing docker package
 apt-get install -y \
-  docker-engine=1.11.2-0~jessie
+  docker-engine=${DOCKER_VERSION}
+###
+# Installing Terraform
+###
+curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip > terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /usr/bin
+rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+###
+# Installing Packer
+###
+curl "https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip" -o /tmp/packer.zip
+unzip /tmp/packer.zip -d /usr/bin
+rm -f /tmp.packer.zip
 ###
 # Cleaning Image
 ###
