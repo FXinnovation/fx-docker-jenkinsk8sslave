@@ -19,7 +19,4 @@ node {
         sh 'echo "This is not a tagged version, skipping publishing"'
       }
     }
-    stage("cleaning") {
-      sh "docker images |grep \"gcr.io/adopt-continuous-integration/jenkins-k8s-slave\" |grep \"${tag_id}\" | awk '{print \$3}' | xargs docker rmi -f"
-    }
 }
