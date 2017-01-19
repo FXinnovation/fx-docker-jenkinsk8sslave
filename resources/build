@@ -7,7 +7,10 @@ set -x -e
   echo 'dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"'; \
 } > /usr/local/bin/docker-java-home
 chmod +x /usr/local/bin/docker-java-home
-apk --no-cache add openjdk8="$JAVA_ALPINE_VERSION" git
+apk --no-cache add \
+  openjdk8="$JAVA_ALPINE_VERSION" \
+  git \
+  python
 [ "$JAVA_HOME" = "$(docker-java-home)" ]
 
 apk --no-cache add bash openssh-client
@@ -19,12 +22,14 @@ chmod 644 /usr/share/jenkins/slave.jar
 ###
 # Installing gcloud and kubectl as basic dependencies
 ###
-curl https://sdk.cloud.google.com | bash && mv google-cloud-sdk /opt
+curl https://sdk.cloud.google.com | bash
+mkdir /opt
+mv /home/jenkins/google-cloud-sdk /opt
+mv /resources/bashrc /home/jenkins/.bashrc
+source /home/jenkins/.bashrc
 gcloud components install kubectl
 apk del curl
 mkdir -p /home/jenkins/.docker/
 ln -s /home/jenkins/.docker/.dockercfg /home/jenkins/.dockercfg
-
 mv /resources/dockerd-entrypoint.sh /usr/local/bin/
 mv /resources/jenkins-slave /usr/local/bin/
-
