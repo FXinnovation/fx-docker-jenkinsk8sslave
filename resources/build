@@ -16,13 +16,15 @@ curl --create-dirs -sSLo \
   http://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/3.3/remoting-3.3.jar
 chmod 755 /usr/share/jenkins
 chmod 644 /usr/share/jenkins/slave.jar
+###
+# Installing gcloud and kubectl as basic dependencies
+###
+curl https://sdk.cloud.google.com | bash && mv google-cloud-sdk /opt
+gcloud components install kubectl
 apk del curl
 mkdir -p /home/jenkins/.docker/
 ln -s /home/jenkins/.docker/.dockercfg /home/jenkins/.dockercfg
 
 mv /resources/dockerd-entrypoint.sh /usr/local/bin/
 mv /resources/jenkins-slave /usr/local/bin/
-###
-# Installing some basic dependencies
-###
 

@@ -4,10 +4,11 @@ MAINTAINER fxinnovation
 
 ENV LANG=C.UTF-8 \
     JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk \
-    PATH=$PATH:/usr/lib/jvm/java-1.8-openjdk/jre/bin:/usr/lib/jvm/java-1.8-openjdk/bin \
+    PATH=/opt/google-cloud-sdk/bin:$PATH:/usr/lib/jvm/java-1.8-openjdk/jre/bin:/usr/lib/jvm/java-1.8-openjdk/bin \
     JAVA_VERSION=8u111 \
     JAVA_ALPINE_VERSION=8.111.14-r1 \
-    HOME=/home/jenkins
+    HOME=/home/jenkins \
+    CLOUDSDK_CORE_DISABLE_PROMPTS=1
 
 VOLUME /home/jenkins
 
