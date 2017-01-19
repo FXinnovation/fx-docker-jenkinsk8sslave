@@ -7,7 +7,7 @@ set -x -e
   echo 'dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"'; \
 } > /usr/local/bin/docker-java-home
 chmod +x /usr/local/bin/docker-java-home
-apk --no-cache add openjdk8="$JAVA_ALPINE_VERSION"
+apk --no-cache add openjdk8="$JAVA_ALPINE_VERSION" git
 [ "$JAVA_HOME" = "$(docker-java-home)" ]
 
 apk --no-cache add bash openssh-client
@@ -22,3 +22,7 @@ ln -s /home/jenkins/.docker/.dockercfg /home/jenkins/.dockercfg
 
 mv /resources/dockerd-entrypoint.sh /usr/local/bin/
 mv /resources/jenkins-slave /usr/local/bin/
+###
+# Installing some basic dependencies
+###
+
