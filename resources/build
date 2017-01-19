@@ -1,5 +1,5 @@
 #!/bin/sh
-set -x
+set -x -e
 { \
   echo '#!/bin/sh'; \
   echo 'set -e'; \
