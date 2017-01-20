@@ -33,3 +33,9 @@ mkdir -p /home/jenkins/.docker/
 ln -s /home/jenkins/.docker/.dockercfg /home/jenkins/.dockercfg
 mv /resources/dockerd-entrypoint.sh /usr/local/bin/
 mv /resources/jenkins-slave /usr/local/bin/
+###
+# Adding jenkins user
+###
+addgroup -g 10000 jenkins
+adduser -h /home/jenkins -u 10000 -G jenkins jenkins -D
+

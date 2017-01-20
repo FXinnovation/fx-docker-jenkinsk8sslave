@@ -17,3 +17,5 @@ ADD ./resources /resources
 RUN /resources/build && rm -rf /resources
 
 WORKDIR /home/jenkins
+
+USER jenkins
