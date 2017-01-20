@@ -1,41 +1,20 @@
-#!/bin/sh
-set -x -e
-{ \
-  echo '#!/bin/sh'; \
-  echo 'set -e'; \
-  echo; \
-  echo 'dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"'; \
-} > /usr/local/bin/docker-java-home
-chmod +x /usr/local/bin/docker-java-home
-apk --no-cache add \
-  openjdk8="$JAVA_ALPINE_VERSION" \
-  git \
-  python
-[ "$JAVA_HOME" = "$(docker-java-home)" ]
-
-apk --no-cache add bash openssh-client
-curl --create-dirs -sSLo \
-  /usr/share/jenkins/slave.jar \
-  http://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/3.3/remoting-3.3.jar
-chmod 755 /usr/share/jenkins
-chmod 644 /usr/share/jenkins/slave.jar
+#!/bin/bash
+set -e -x
 ###
-# Installing gcloud and kubectl as basic dependencies
+# Installing some basic dependencies
 ###
-curl https://sdk.cloud.google.com | bash
-mkdir /opt
-mv /home/jenkins/google-cloud-sdk /opt
-mv /resources/bashrc /home/jenkins/.bashrc
-source /home/jenkins/.bashrc
-gcloud components install kubectl
-apk del curl
-mkdir -p /home/jenkins/.docker/
-ln -s /home/jenkins/.docker/.dockercfg /home/jenkins/.dockercfg
-mv /resources/dockerd-entrypoint.sh /usr/local/bin/
-mv /resources/jenkins-slave /usr/local/bin/
+apt-get update -qq  
+apt-get install -qqy \
+  apt-transport-https \
+  ca-certificates \
+  curl \
+  lxc \
+  iptables
 ###
-# Adding jenkins user
+# Installing Docker
 ###
-addgroup -g 10000 jenkins
-adduser -h /home/jenkins -u 10000 -G jenkins jenkins -D
-
+curl -sSL https://get.docker.com/ | sh
+###
+# Adding new entrypoint
+###
+mv /resources/dockerd-entrypoint /usr/local/bin
