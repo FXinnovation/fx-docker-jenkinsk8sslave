@@ -1,6 +1,6 @@
 FROM gcr.io/cloud-solutions-images/jenkins-k8s-slave:v2 
 
-MAINTAINER fxinnovation
+MAINTAINER FXinnovation <cloudsquad@fxinnovation.com>
 
 ADD ./resources /resources
 
