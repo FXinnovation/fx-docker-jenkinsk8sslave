@@ -4,6 +4,7 @@ set -e -x
 # Adding new entrypoint
 ###
 mv /resources/dockerd-entrypoint /usr/local/bin
+mv /resources/jenkins-slave /usr/local/bin
 ###
 # Installing needed Packages
 ###
@@ -20,7 +21,10 @@ apk add --update --no-cache \
   unzip=$UNZIP_VERSION \
   xz=$XZ_VERSION \
   jq=$JQ_VERSION \
-  wget=$WGET_VERSION
+  iptables=$IPTABLES_VERSION \
+  e2fsprogs=$E2FSPROGS_VERSION \
+  wget=$WGET_VERSION \
+  bash=$BASH_VERSION
 ###
 # Installing jnlp
 ###
