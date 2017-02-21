@@ -34,7 +34,7 @@ chmod 644 /usr/share/jenkins/slave.jar
 ###
 cd /resources
 wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${GCLOUDSDK_VERSION}-linux-x86_64.tar.gz
-tar -xzf /resources/google-cloud-sdk-${$GCLOUDSDK_VERSION}-linux-x86_64.tar.gz
+tar -xzf /resources/google-cloud-sdk-${GCLOUDSDK_VERSION}-linux-x86_64.tar.gz
 mv google-cloud-sdk /opt
 ###
 # Installing kubectl
