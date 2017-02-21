@@ -30,10 +30,6 @@ curl --create-dirs \
 chmod 755 /usr/share/jenkins
 chmod 644 /usr/share/jenkins/slave.jar
 ###
-# Creating jenkins user
-###
-useradd -c "Jenkins user" -d /data -m jenkins
-###
 # Installing Google Cloud SDK
 ###
 wget -O /resources/ \
