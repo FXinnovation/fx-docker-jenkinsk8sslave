@@ -2,7 +2,7 @@ FROM docker:1.13.1-dind
 
 ENV JAVA_VERSION=8.121.13-r0 \
     JNLP_VERSION=2.60 \
-    GCLOUSDK_VERSION=144.0.0 \
+    GCLOUDSDK_VERSION=144.0.0 \
     KUBECTL_VERSION=1.5.2 \
     BZR_VERSION=2.7.0-r0 \
     GIT_VERSION=2.11.1-r0 \
@@ -43,7 +43,7 @@ LABEL "maintainer"="cloudsquad@fxinnovation.com" \
       "org.label-schema.applications.java.version"=$JAVA_VERSION \
       "org.label-schema.applications.jnlp.version"=$JNLP_VERSION \
       "org.label-schema.applications.docker.version"=$DOCKER_VERSION \
-      "org.label-schema.applications.google-cloud-sdk.version"=$GCLOUSDK_VERSION \
+      "org.label-schema.applications.google-cloud-sdk.version"=$GCLOUDSDK_VERSION \
       "org.label-schema.applications.kubectl.version"=$KUBECTL_VERSION \
       "org.label-schema.applications.bzr.version"=$BZR_VERSION \
       "org.label-schema.applications.git.version"=$GIT_VERSION \
