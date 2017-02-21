@@ -30,7 +30,7 @@ apk add --update --no-cache \
 ###
 curl --create-dirs \
      -sSLo /usr/share/jenkins/slave.jar \
-     https://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/${VERSION}/remoting-${VERSION}.jar
+     https://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/${JNLP_VERSION}/remoting-${JNLP_VERSION}.jar
 chmod 755 /usr/share/jenkins
 chmod 644 /usr/share/jenkins/slave.jar
 ###
