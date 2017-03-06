@@ -24,6 +24,8 @@ apk add --update --no-cache \
   iptables=$IPTABLES_VERSION \
   e2fsprogs=$E2FSPROGS_VERSION \
   wget=$WGET_VERSION \
+  zip=$ZIP_VERSION \
+  unzip=$UNZIP_VERSION \
   bash=$BASH_VERSION
 ###
 # Installing jnlp
