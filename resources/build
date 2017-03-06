@@ -25,7 +25,6 @@ apk add --update --no-cache \
   e2fsprogs=$E2FSPROGS_VERSION \
   wget=$WGET_VERSION \
   zip=$ZIP_VERSION \
-  unzip=$UNZIP_VERSION \
   bash=$BASH_VERSION
 ###
 # Installing jnlp
