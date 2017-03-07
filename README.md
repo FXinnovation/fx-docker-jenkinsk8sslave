@@ -4,7 +4,7 @@
 This is a dind image... I know it's bad but has some great advantages, really.
 
 ## Tags
-Be adviced that since we really don't like docker's latest tag on application containers, we won't publish a latest tag.
+We do publish a `latest` tag on this image. Since this is basically a build image, we can use a the latest tag. If you prefer running a specific tag. Just pin a version in you jenkins config or Jenkinsfile.
 
 We do not follow the jnlp release tags in the docker image tags. You can always find the jnlp version in the Dockerfile that was used to create the image or you can use the labels.
 

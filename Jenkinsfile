@@ -40,15 +40,8 @@ node {
       }
       stage("test") {
         // Testing Image Works
-        output = sh(
-          returnStdout: true,
-          script: "docker inspect ${dockerhub_repo}:${tag_id}"
-        ).trim()
-        println output
-//        message = sh (
-//          returnStdout: true,
-//          script: "echo '$output' | jq . |aha"
-//        ).trim()
+        sh "docker inspect ${dockerhub_repo}:${tag_id}"
+        message = "Docker build was successfull"
       }
     }
   }catch (error){
