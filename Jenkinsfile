@@ -47,8 +47,9 @@ node {
         println output
         message = sh (
           returnStdout: true,
-          script: "echo '$output' | jq . |aha"
+          script: "echo '$output' |jq '.[].Config.Labels' |aha"
         ).trim()
+        println message
       }
     }
   }catch (error){
