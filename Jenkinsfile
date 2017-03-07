@@ -40,7 +40,15 @@ node {
       }
       stage("test") {
         // Testing Image Works
-        sh "docker inspect ${dockerhub_repo}:${tag_id}"
+        output = sh(
+          returnStdout: true,
+          script: "docker inspect ${dockerhub_repo}:${tag_id}"
+        ).trim()
+        println output
+//        message = sh (
+//          returnStdout: true,
+//          script: "echo '$output' | jq . |aha"
+//        ).trim()
       }
     }
   }catch (error){
