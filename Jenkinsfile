@@ -40,16 +40,8 @@ node {
       }
       stage("test") {
         // Testing Image Works
-        output = sh(
-          returnStdout: true,
-          script: "docker inspect ${dockerhub_repo}:${tag_id}"
-        ).trim()
-        println output
-        message = sh (
-          returnStdout: true,
-          script: "echo '$output' |jq '.[].Config.Labels' |aha"
-        ).trim()
-        println message
+        sh "docker inspect ${dockerhub_repo}:${tag_id}"
+        message = "Docker build was successfull"
       }
     }
   }catch (error){
@@ -65,7 +57,7 @@ node {
         credentialId: 'jenkins-hipchat-token',
         message: "Job Name: ${JOB_NAME} (<a href=\"${BUILD_URL}\">Open</a>)<br /> \
                   Job Status: ${result} <br /> \
-                  Job Message: <br />${message}",
+                  Job Message: <br /><pre>${message}<pre/>",
         room: '942680',
         notify: notify,
         sendAs: 'New-Jenkins',
