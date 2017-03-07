@@ -44,7 +44,7 @@ node {
           returnStdout: true,
           script: "docker inspect ${dockerhub_repo}:${tag_id}"
         ).trim
-        println ouput
+        println output
         message = sh (
           returnStdout: true,
           script: "echo '$output' | jq . |aha"
