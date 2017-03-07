@@ -47,7 +47,7 @@ node {
         println ouput
         message = sh (
           returnStdout: true,
-          script: "echo '$output' |aha"
+          script: "echo '$output' | jq . |aha"
         ).trim()
       }
     }
