@@ -43,7 +43,7 @@ node {
         output = sh(
           returnStdout: true,
           script: "docker inspect ${dockerhub_repo}:${tag_id}"
-        ).trim
+        ).trim()
         println output
         message = sh (
           returnStdout: true,
