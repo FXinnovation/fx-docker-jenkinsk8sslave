@@ -25,7 +25,10 @@ apk add --update --no-cache \
   e2fsprogs=$E2FSPROGS_VERSION \
   wget=$WGET_VERSION \
   zip=$ZIP_VERSION \
-  bash=$BASH_VERSION
+  bash=$BASH_VERSION \
+  groff=$GROFF_VERSION \
+  py2-pip=$PY2PIP_VERSION
+
 ###
 # Installing jnlp
 ###
@@ -49,6 +52,10 @@ mv google-cloud-sdk /opt/google-cloud-sdk
 curl -LO https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 mv ./kubectl /usr/local/bin/kubectl
+###
+# Installing AWS CLI
+###
+pip install awscli==${AWSCLI_VERSION}
 ###
 # Installing aha
 ###
