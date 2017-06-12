@@ -53,6 +53,13 @@ curl -LO https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VE
 chmod +x ./kubectl
 mv ./kubectl /usr/local/bin/kubectl
 ###
+# Installing kops
+###
+curl -L \
+  -o /usr/local/bin/kops \
+  https://github.com/kubernetes/kops/releases/download/${KOPS_VERSION}/kops-linux-amd64
+chmod +x /usr/local/bin/kops
+###
 # Installing AWS CLI
 ###
 pip install awscli==${AWSCLI_VERSION}
