@@ -76,16 +76,18 @@ try {
           image: "${dockerhub_repo}:${branch}"
         )
     ){
-      sh 'git --version'
-      sh 'gcloud --version'
-      sh 'kubectl version'
-      sh 'jq --version'
-      sh 'wget --version'
-      sh 'zip --version'
-      sh 'kops version'
-      sh 'aws --version'
-      sh 'docker --version'
-      sh 'sleep 10'
+      node('test'){
+        sh 'git --version'
+        sh 'gcloud --version'
+        sh 'kubectl version'
+        sh 'jq --version'
+        sh 'wget --version'
+        sh 'zip --version'
+        sh 'kops version'
+        sh 'aws --version'
+        sh 'docker --version'
+        sh 'sleep 10'
+      }
     }
   }
 }catch (error){
