@@ -28,6 +28,7 @@ try {
           returnStdout: true,
           script: "git rev-parse --abbrev-ref HEAD"
         ).trim()
+        sh 'env'
         println "Git Info:"
         println "Tag: $tag_id"
         println "Commit: $commit_id"
