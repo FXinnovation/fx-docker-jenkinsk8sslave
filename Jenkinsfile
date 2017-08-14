@@ -76,7 +76,6 @@ try {
     sh 'jq --version'
     sh 'wget --version'
     sh 'zip --version'
-    sh 'aha --version'
     sh 'kops version'
     sh 'aws --version'
     sh 'sleep 10

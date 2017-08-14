@@ -63,9 +63,3 @@ chmod +x /usr/local/bin/kops
 # Installing AWS CLI
 ###
 pip install awscli==${AWSCLI_VERSION}
-###
-# Installing aha
-###
-curl -sSLo /resources/aha.tar.gz http://35.186.216.115/repository/artifacts/aha/${AHA_VERSION}/aha-${AHA_VERSION}.tar.gz
-tar -xzf /resources/aha.tar.gz
-mv aha /usr/local/bin
