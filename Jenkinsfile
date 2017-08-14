@@ -78,7 +78,7 @@ try {
     sh 'zip --version'
     sh 'kops version'
     sh 'aws --version'
-    sh 'sleep 10
+    sh 'sleep 10'
   }
 }catch (error){
   result="FAILED"
