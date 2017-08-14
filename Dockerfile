@@ -1,4 +1,4 @@
-FROM docker:1.13.1-dind
+FROM docker:17.06.0-ce-dind
 
 ENV JAVA_VERSION=8.121.13-r0 \
     JNLP_VERSION=2.62 \
@@ -47,7 +47,7 @@ ENTRYPOINT ["dockerd-entrypoint"]
 LABEL "maintainer"="cloudsquad@fxinnovation.com" \
       "org.label-schema.name"="jenkinsk8sslave" \
       "org.label-schema.base-image.name"="docker.io/library/docker" \
-      "org.label-schema.base-image.version"="1.13.1-dind" \
+      "org.label-schema.base-image.version"="17.06.0-ce-dind" \
       "org.label-schema.applications.java.version"=$JAVA_VERSION \
       "org.label-schema.applications.jnlp.version"=$JNLP_VERSION \
       "org.label-schema.applications.docker.version"=$DOCKER_VERSION \

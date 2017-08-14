@@ -78,6 +78,7 @@ try {
     sh 'zip --version'
     sh 'kops version'
     sh 'aws --version'
+    sh 'docker --version'
     sh 'sleep 10'
   }
 }catch (error){
