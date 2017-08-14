@@ -46,6 +46,7 @@ try {
              --label \"org.label-schema.build-date\"=\"\$(date -u +\"%Y-%m-%dT%H:%M:%SZ\")\" \
              --label \"org.label-schema.usage\"=\"${scm_url}/src?at=${tag_id}\" \
              -t ${dockerhub_repo}:${tag_id} ."
+        sh "docker inspect ${dockerhub_repo}:${tag_id}"
       }
       stage("publish") {
         if ( branch == "master" ) {
