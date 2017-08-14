@@ -26,9 +26,8 @@ try {
         ).trim()
         branch = sh(
           returnStdout: true,
-          script: "git rev-parse --abbrev-ref HEAD"
+          script: "echo $BRANCH_NAME"
         ).trim()
-        sh 'env'
         println "Git Info:"
         println "Tag: $tag_id"
         println "Commit: $commit_id"
