@@ -28,6 +28,11 @@ try {
           returnStdout: true,
           script: "git rev-parse --abbrev-ref HEAD"
         ).trim()
+        println "Git Info:"
+        println "Tag: $tag_id"
+        println "Commit: $commit_id"
+        println "Branch name: $branch"
+        println "SCM URL: $scm_url"
       }
       stage('pre-build') {
         // Verifying docker is up and running
