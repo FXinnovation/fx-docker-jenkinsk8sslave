@@ -1,10 +1,10 @@
-node {
-  result="SUCCESS"
-  color="GREEN"
-  notify=false
-  message="No special message"
-  try {
-    dockerhub_repo = 'fxinnovation/jenkinsk8sslave'
+dockerhub_repo = 'fxinnovation/jenkinsk8sslave'
+result         = "SUCCESS"
+color          = "GREEN"
+notify         = false
+message        = "No special message"
+try {
+  node {
     ansiColor('xterm') {
       stage('checkout') {
         // Checking out scm
@@ -24,6 +24,15 @@ node {
           returnStdout: true,
           script: "git config --get remote.origin.url"
         ).trim()
+        branch = sh(
+          returnStdout: true,
+          script: "echo $BRANCH_NAME"
+        ).trim()
+        println "Git Info:"
+        println "Tag: $tag_id"
+        println "Commit: $commit_id"
+        println "Branch name: $branch"
+        println "SCM URL: $scm_url"
       }
       stage('pre-build') {
         // Verifying docker is up and running
@@ -38,19 +47,57 @@ node {
              --label \"org.label-schema.usage\"=\"${scm_url}/src?at=${tag_id}\" \
              -t ${dockerhub_repo}:${tag_id} ."
       }
-      stage("test") {
-        // Testing Image Works
-        sh "docker inspect ${dockerhub_repo}:${tag_id}"
-        message = "Docker build was successfull"
+      stage("publish") {
+        if ( branch == "master" ) {
+          sh "docker tag ${dockerhub_repo}:${tag_id} ${dockerhub_repo}:${branch}"
+          withCredentials([
+            usernamePassword(
+              credentialsId: 'jenkins-fxinnovation-dockerhub',
+              passwordVariable: 'password',
+              usernameVariable: 'username'
+            )
+          ]){
+            sh "set +x && docker login -u '${username}' -p '${password}'"
+          }
+          sh "docker push ${dockerhub_repo}:${branch}"
+        }else{
+          println ('Skipping publishing master tag, not on master')
+        }
+      }
+    } 
+  }
+  if (branch == "master" ){
+    podTemplate(
+        cloud: 'kubernetes',
+        name: 'jenkins-slave-test',
+        label: "test",
+        inheritFrom: 'jenkins-slave',
+        containerTemplate(
+          image: "${dockerhub_repo}:${branch}"
+        )
+    ){
+      node('test'){
+        sh 'git --version'
+        sh 'gcloud --version'
+        sh 'kubectl version'
+        sh 'jq --version'
+        sh 'wget --version'
+        sh 'zip --version'
+        sh 'kops version'
+        sh 'aws --version'
+        sh 'docker --version'
+        sh 'sleep 10'
       }
     }
-  }catch (error){
-    result="FAILED"
-    color="RED"
-    notify=true
-    message=error
-    throw (error)
-  }finally {
+  }
+}catch (error){
+  result="FAILED"
+  color="RED"
+  notify=true
+  message=error
+  throw (error)
+}finally {
+  node {
     stage("notify"){
       hipchatSend (
         color: color,
