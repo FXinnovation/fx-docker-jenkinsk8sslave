@@ -61,25 +61,27 @@ try {
       }
     } 
   }
-  podTemplate(
-      cloud: 'kubernetes',
-      name: 'jenkins-slave-test',
-      label: "test",
-      inheritFrom: 'jenkins-slave',
-      containerTemplate(
-        image: "${dockerhub_repo}:${branch}"
-      )
-  ){
-    sh 'git --version'
-    sh 'gcloud --version'
-    sh 'kubectl version'
-    sh 'jq --version'
-    sh 'wget --version'
-    sh 'zip --version'
-    sh 'kops version'
-    sh 'aws --version'
-    sh 'docker --version'
-    sh 'sleep 10'
+  if (branch == "master" ){
+    podTemplate(
+        cloud: 'kubernetes',
+        name: 'jenkins-slave-test',
+        label: "test",
+        inheritFrom: 'jenkins-slave',
+        containerTemplate(
+          image: "${dockerhub_repo}:${branch}"
+        )
+    ){
+      sh 'git --version'
+      sh 'gcloud --version'
+      sh 'kubectl version'
+      sh 'jq --version'
+      sh 'wget --version'
+      sh 'zip --version'
+      sh 'kops version'
+      sh 'aws --version'
+      sh 'docker --version'
+      sh 'sleep 10'
+    }
   }
 }catch (error){
   result="FAILED"
