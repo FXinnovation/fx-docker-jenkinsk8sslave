@@ -72,9 +72,12 @@ try {
         name: 'jenkins-slave-test',
         label: "test",
         inheritFrom: 'jenkins-slave',
-        containerTemplate(
-          image: "${dockerhub_repo}:${branch}"
-        )
+        containers: [
+          containerTemplate(
+            name: 'jnlp',
+            image: "${dockerhub_repo}:${branch}"
+          )
+        ]
     ){
       node('test'){
         sh 'git --version'
