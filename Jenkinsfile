@@ -28,6 +28,7 @@ try {
           returnStdout: true,
           script: "echo $BRANCH_NAME"
         ).trim()
+        println "Gitinfo"
       }
       stage('pre-build') {
         // Verifying docker is up and running
