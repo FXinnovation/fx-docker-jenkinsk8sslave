@@ -91,6 +91,7 @@ try {
         sh 'aws --version'
         sh 'docker --version'
         sh 'sleep 10'
+        sh 'docker run hello-world'
       }
     }
   }
