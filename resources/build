@@ -62,4 +62,5 @@ pip install awscli==${AWSCLI_VERSION}
 curl -L https://storage.googleapis.com/kubernetes-helm/helm-v${HELM_VERSION}-linux-amd64.tar.gz -o /resources/helm.tar.gz
 tar -xzf /resources/helm.tar.gz
 chmod +x helm
-mv helm /usr/local/bin/helm
+mv linux-amd64/helm /usr/local/bin/helm
+rm -rf linux-amd64
