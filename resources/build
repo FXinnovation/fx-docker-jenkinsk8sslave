@@ -1,13 +1,11 @@
 #!/bin/sh
 set -e -x
-###
+
 # Adding new entrypoint
-###
 mv /resources/dockerd-entrypoint /usr/local/bin
 mv /resources/jenkins-slave /usr/local/bin
-###
+
 # Installing needed Packages
-###
 apk add --update --no-cache \
   python2=$PYTHON2_VERSION \
   openjdk8=$JAVA_VERSION \
@@ -30,37 +28,46 @@ apk add --update --no-cache \
   groff=$GROFF_VERSION \
   py2-pip=$PY2PIP_VERSION
 
-###
+
 # Installing jnlp
-###
 curl --create-dirs \
      -sSLo /usr/share/jenkins/slave.jar \
      https://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/${JNLP_VERSION}/remoting-${JNLP_VERSION}.jar
 chmod 755 /usr/share/jenkins
 chmod 644 /usr/share/jenkins/slave.jar
-###
+
 # Installing Google Cloud SDK
-###
 cd /resources
 wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${GCLOUDSDK_VERSION}-linux-x86_64.tar.gz
 tar -xzf /resources/google-cloud-sdk-${GCLOUDSDK_VERSION}-linux-x86_64.tar.gz
-mkdir /opt
+mkdir /opt || true
 mv google-cloud-sdk /opt/google-cloud-sdk
 /opt/google-cloud-sdk/install.sh
-###
+
 # Installing kubectl
-###
 curl -LO https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 mv ./kubectl /usr/local/bin/kubectl
-###
+
 # Installing kops
-###
 curl -L \
   -o /usr/local/bin/kops \
   https://github.com/kubernetes/kops/releases/download/${KOPS_VERSION}/kops-linux-amd64
 chmod +x /usr/local/bin/kops
-###
+
 # Installing AWS CLI
-###
 pip install awscli==${AWSCLI_VERSION}
+
+# Installing Helm
+curl -L https://storage.googleapis.com/kubernetes-helm/helm-v${HELM_VERSION}-linux-amd64.tar.gz -o /resources/helm.tar.gz
+tar -xzf /resources/helm.tar.gz
+chmod +x linux-amd64/helm
+mv linux-amd64/helm /usr/local/bin/helm
+rm -rf linux-amd64
+
+helm init -c
+
+# Installing helm push plugin
+helm plugin install \
+  https://github.com/chartmuseum/helm-push \
+  --version "v${HELM_PLUGIN_PUSH_VERSION}"
