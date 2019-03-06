@@ -1,3 +1,4 @@
 fxDockerImage(
-  image: 'jenkinsk8sslave'
+  image: 'jenkinsk8sslave',
+  pushLatest: true
 )
