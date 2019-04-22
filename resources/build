@@ -71,3 +71,9 @@ helm init -c
 helm plugin install \
   https://github.com/chartmuseum/helm-push \
   --version "v${HELM_PLUGIN_PUSH_VERSION}"
+
+### Hardening
+touch /etc/login.defs
+chmod 0444 /etc/login.defs
+
+chmod 0400 /etc/shadow
