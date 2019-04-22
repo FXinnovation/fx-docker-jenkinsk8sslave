@@ -76,4 +76,4 @@ helm plugin install \
 touch /etc/login.defs
 chmod 0444 /etc/login.defs
 
-chmod 0400 /etc/shadow
+chmod 0600 /etc/shadow
