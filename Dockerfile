@@ -1,4 +1,4 @@
-FROM docker:18.06.3-ce-dind
+FROM docker:19.03.0-dind
 
 ENV BASH_VERSION=4.4.19-r1 \
     BZIP2_VERSION=1.0.6-r6 \
@@ -50,7 +50,7 @@ ENTRYPOINT ["dockerd-entrypoint"]
 LABEL "maintainer"="cloudsquad@fxinnovation.com" \
       "org.label-schema.name"="jenkinsk8sslave" \
       "org.label-schema.base-image.name"="docker.io/library/docker" \
-      "org.label-schema.base-image.version"="18.06.3-ce-dind" \
+      "org.label-schema.base-image.version"="19.03.0-dind" \
       "org.label-schema.applications.java.version"=$JAVA_VERSION \
       "org.label-schema.applications.jnlp.version"=$JNLP_VERSION \
       "org.label-schema.applications.docker.version"=$DOCKER_VERSION \
