@@ -1,4 +1,4 @@
-FROM docker:19.03.0-dind
+FROM docker:19.03.5-dind
 
 ENV BASH_VERSION=5.0.0-r0 \
     BZIP2_VERSION=1.0.6-r7 \
@@ -20,13 +20,12 @@ ENV BASH_VERSION=5.0.0-r0 \
     WGET_VERSION=1.20.3-r0 \
     XZ_VERSION=5.2.4-r0 \
     ZIP_VERSION=3.0-r7 \
-    AWSCLI_VERSION=1.16.64 \
-    GCLOUDSDK_VERSION=236.0.0 \
+    AWSCLI_VERSION=1.16.310 \
+    GCLOUDSDK_VERSION=275.0.0 \
     JNLP_VERSION=3.40 \
-    HELM_VERSION=2.11.0 \
+    HELM_VERSION=2.16.1 \
     HELM_PLUGIN_PUSH_VERSION=0.7.1 \
-    KOPS_VERSION=1.7.0 \
-    KUBECTL_VERSION=1.13.3 \
+    KUBECTL_VERSION=1.17.0 \
     CLOUDSDK_CORE_DISABLE_PROMPTS=1 \
     PAGE="more" \
     PATH=/opt/google-cloud-sdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
@@ -76,7 +75,6 @@ LABEL "maintainer"="cloudsquad@fxinnovation.com" \
       "org.label-schema.applications.groff.version"=$GROFF_VERSION \
       "org.label-schema.applications.py2-pip.version"=$PYPIP_VERSION \
       "org.label-schema.applications.awscli.version"=$AWSCLI_VERSION \
-      "org.label-schema.applications.kops.version"=$KOPS_VERSION \
       "org.label-schema.applications.helm.version"=$HELM_VERSION \
       "org.label-schema.applications.helm-push.version"=$HELM_PLUGIN_PUSH_VERSION \
       "org.label-schema.applications.curl.version"="unkown" \
