@@ -24,3 +24,6 @@ We set labels on our images with additional information on the image. we follow 
 
 ## Comments and Issues
 If you have comments or detect an issue, please be adviced we don't check the docker hub comments. You can always contact us through the repository.
+
+## CHANGELOG and AUTHOR files
+These file are generate using the `git changelog` and `git authors` commands made available using the `git-extras` package. Please refer to your OS's package documentation to install these tools.
