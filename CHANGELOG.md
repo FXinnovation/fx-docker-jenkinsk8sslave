@@ -2,6 +2,7 @@
 4.0.0 / 2020-01-13
 ==================
 
+  * maintenance: update dependencies
   * breaking: Update additionnal packages
   * feature: Pin JNLP agent to 3.40
   * feature: Pin latest versions for dependencies
