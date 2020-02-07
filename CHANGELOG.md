@@ -1,6 +1,11 @@
 
-4.0.0 / 2020-01-13
-==================
+3.15.0 / 2020-02-07
+===================
+
+  * feat: /var/lib/docker as a volume, pin packages
+
+4.0.0-rc1 / 2020-01-13
+======================
 
   * maintenance: update dependencies
   * breaking: Update additionnal packages

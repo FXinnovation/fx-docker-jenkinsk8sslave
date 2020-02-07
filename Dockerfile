@@ -4,11 +4,11 @@ ENV BASH_VERSION=5.0.11-r1 \
     BZIP2_VERSION=1.0.8-r1 \
     BZR_VERSION=2.7.0-r1 \
     CURL_VERSION=7.67.0-r0 \
-    E2FSPROGS_VERSION=1.45.4-r0 \
+    E2FSPROGS_VERSION=1.45.5-r0 \
     GIT_VERSION=2.24.1-r0 \
     GROFF_VERSION=1.22.4-r0 \
     IPTABLES_VERSION=1.8.3-r1 \
-    JAVA_VERSION=8.232.09-r0 \
+    JAVA_VERSION=8.242.08-r0 \
     MERCURIAL_VERSION=5.2.1-r0 \
     JQ_VERSION=1.6-r0 \
     OPENSSH_VERSION=8.1_p1-r0 \
@@ -41,6 +41,7 @@ ADD ./resources /resources
 RUN /resources/build && rm -rf /resources
 
 VOLUME /data
+VOLUME /var/lib/docker
 
 WORKDIR /data
 
