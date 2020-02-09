@@ -42,6 +42,7 @@ RUN /resources/build && rm -rf /resources
 
 VOLUME /data
 VOLUME /var/lib/docker
+VOLUME /tmp
 
 WORKDIR /data
 
