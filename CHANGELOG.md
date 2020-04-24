@@ -1,4 +1,10 @@
 
+3.17.0 / 2020-04-24
+===================
+
+  * feat: Update jenkins dependencies
+  * tech: add pre-commit configuration
+
 3.16.0 / 2020-02-08
 ===================
 
