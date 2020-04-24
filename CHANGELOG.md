@@ -2,6 +2,7 @@
 3.17.0 / 2020-04-24
 ===================
 
+  * feat: Update docker to 19.03.8
   * feat: Update jenkins dependencies
   * tech: add pre-commit configuration
 

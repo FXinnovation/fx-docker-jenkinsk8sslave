@@ -1,4 +1,4 @@
-FROM docker:19.03.5-dind
+FROM docker:19.03.8-dind
 
 ENV BASH_VERSION=5.0.11-r1 \
     BZIP2_VERSION=1.0.8-r1 \
@@ -7,7 +7,7 @@ ENV BASH_VERSION=5.0.11-r1 \
     E2FSPROGS_VERSION=1.45.5-r0 \
     GIT_VERSION=2.24.3-r0 \
     GROFF_VERSION=1.22.4-r0 \
-    IPTABLES_VERSION=1.8.3-r1 \
+    IPTABLES_VERSION=1.8.3-r2 \
     JAVA_VERSION=8.242.08-r0 \
     MERCURIAL_VERSION=5.3.2-r0 \
     JQ_VERSION=1.6-r0 \
@@ -51,7 +51,7 @@ ENTRYPOINT ["dockerd-entrypoint"]
 LABEL "maintainer"="cloudsquad@fxinnovation.com" \
       "org.label-schema.name"="jenkinsk8sslave" \
       "org.label-schema.base-image.name"="docker.io/library/docker" \
-      "org.label-schema.base-image.version"="19.03.5-dind" \
+      "org.label-schema.base-image.version"="19.03.8-dind" \
       "org.label-schema.applications.java.version"=$JAVA_VERSION \
       "org.label-schema.applications.jnlp.version"=$JNLP_VERSION \
       "org.label-schema.applications.docker.version"=$DOCKER_VERSION \
