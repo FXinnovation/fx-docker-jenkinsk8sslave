@@ -27,3 +27,6 @@ If you have comments or detect an issue, please be adviced we don't check the do
 
 ## CHANGELOG and AUTHOR files
 These file are generate using the `git changelog` and `git authors` commands made available using the `git-extras` package. Please refer to your OS's package documentation to install these tools.
+
+## pre-commit
+This repository uses a pre-commit config file. Our CI will automatically run pre-commit. For more information about pre-commit: https://pre-commit.com/
