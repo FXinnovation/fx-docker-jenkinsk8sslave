@@ -1,6 +1,13 @@
 #!/bin/sh
 set -e -x
 
+# Launching Docker in background
+dockerd \
+  --host=unix:///var/run/docker.sock \
+  --host=tcp://0.0.0.0:2375 \
+  --mtu 1400 &
+
+
 # Adding new entrypoint
 mv /resources/dockerd-entrypoint /usr/local/bin
 mv /resources/jenkins-slave /usr/local/bin
@@ -65,6 +72,9 @@ helm init -c
 helm plugin install \
   https://github.com/chartmuseum/helm-push \
   --version "v${HELM_PLUGIN_PUSH_VERSION}"
+
+docker pull fxinnovation/pre-commit:latest
+docker pull fxinnovation/terraform:latest
 
 ### Hardening
 touch /etc/login.defs
