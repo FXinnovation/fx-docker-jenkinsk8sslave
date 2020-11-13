@@ -1,4 +1,4 @@
-FROM docker:19.03.8-dind
+FROM docker:19.03.12-dind
 
 ENV BASH_VERSION=5.0.11-r1 \
     BZIP2_VERSION=1.0.8-r1 \
@@ -30,7 +30,10 @@ ENV BASH_VERSION=5.0.11-r1 \
     PAGE="more" \
     PATH=/opt/google-cloud-sdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
     LANG=C.UTF-8 \
+    STORAGE_DRIVER=vfs \
     JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
+
+USER root
 
 ARG BUILD_DATE
 ARG VCS_REF
