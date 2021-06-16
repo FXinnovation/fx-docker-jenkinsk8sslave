@@ -1,3 +1,8 @@
+3.18.0 / 2021-06-16
+===================
+
+  * feat: Update docker to 20.10.7
+  * feat: Update jenkins dependencies
 
 3.17.0 / 2020-04-24
 ===================
