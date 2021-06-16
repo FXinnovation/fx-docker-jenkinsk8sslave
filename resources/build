@@ -7,9 +7,8 @@ mv /resources/jenkins-slave /usr/local/bin
 
 # Installing needed Packages
 apk add --update --no-cache \
-  python2=$PYTHON2_VERSION \
+  python3=$PYTHON3_VERSION \
   openjdk8=$JAVA_VERSION \
-  bzr=$BZR_VERSION \
   git=$GIT_VERSION \
   curl=$CURL_VERSION \
   mercurial=$MERCURIAL_VERSION \
@@ -26,7 +25,7 @@ apk add --update --no-cache \
   zip=$ZIP_VERSION \
   bash=$BASH_VERSION \
   groff=$GROFF_VERSION \
-  py2-pip=$PY2PIP_VERSION
+  py3-pip=$PY3PIP_VERSION
 
 
 # Installing jnlp
@@ -61,6 +60,7 @@ rm -rf linux-amd64
 
 helm init -c
 
+echo "foooooooooooooo ==============="
 # Installing helm push plugin
 helm plugin install \
   https://github.com/chartmuseum/helm-push \
