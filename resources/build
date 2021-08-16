@@ -7,6 +7,7 @@ mv /resources/jenkins-slave /usr/local/bin
 
 # Installing needed Packages
 apk add --update --no-cache \
+  tar \
   python3=$PYTHON3_VERSION \
   openjdk8=$JAVA_VERSION \
   git=$GIT_VERSION \
