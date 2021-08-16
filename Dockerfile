@@ -1,4 +1,4 @@
-FROM docker:20.10.7-dind
+FROM docker:20.10.8-dind
 
 ENV BASH_VERSION=5.1.0-r0 \
     BZIP2_VERSION=1.0.8-r1 \
