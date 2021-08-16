@@ -1,3 +1,11 @@
+3.19.0 / 2021-08-16
+===================
+
+  * chore: pins docker base image to version 20.10.8-dind
+  * chore: pins curl version to 7.78.0-r0
+  * chore: pins unzip version to 6.0-r9
+  * fix: build failure and helm source
+
 3.18.0 / 2021-06-16
 ===================
 
